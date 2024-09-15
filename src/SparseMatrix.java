@@ -30,6 +30,6 @@ public class SparseMatrix {
 
     public void addition(SparseMatrix firstMatrix, SparseMatrix secondMatrix) {}
     public void multiplication(SparseMatrix firstMatrix, SparseMatrix secondMatrix){}
-    public void transposition(){}
-    public void scalarMultiplication(){}
+    public void transposition(SparseMatrix matrix){}
+    public void scalarMultiplication(SparseMatrix matrix, int scalar){}
 }
