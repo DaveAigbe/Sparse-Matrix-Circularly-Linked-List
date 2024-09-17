@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class SparseMatrix {
     private CircularLinkedList[] rowHeaders;
     private CircularLinkedList[] colHeaders;
@@ -7,10 +9,41 @@ public class SparseMatrix {
         colHeaders = new CircularLinkedList[dimensions];
     }
 
-    // Check if row/col position in array is empty
-        // If it is empty -> Create a new linked list and set the node as the first value of it, add it to position in array
-        // If it is not empty -> Use the addNode operation on the linked list for that position using its corresponding row/col
-    public void addToMatrix(int row, int col, int val) {
+    public void createMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+                int row = matrix[i][0];
+                int col = matrix[i][1];
+                int value = matrix[i][2];
+                addToMatrix(row, col, value);
+        }
+    }
+
+    public void printRows() {
+        System.out.println();
+        System.out.println("Rows:");
+        for (int i = 0; i < rowHeaders.length; i++) {
+            System.out.print(i + ": ");
+            if (rowHeaders[i] != null) {
+                rowHeaders[i].printList();
+
+            }
+            System.out.println();
+        }
+    }
+
+    public void printCols() {
+        System.out.println();
+        System.out.println("Cols:");
+        for (int i = 0; i < colHeaders.length; i++) {
+            System.out.print(i + ": ");
+            if (colHeaders[i] != null) {
+                colHeaders[i].printList();
+            }
+            System.out.println();
+        }
+    }
+
+    private void addToMatrix(int row, int col, int val) {
         if (rowHeaders[row - 1] == null) {
             CircularLinkedList newRow = new CircularLinkedList();
             newRow.addNode(row, col, val);
@@ -28,8 +61,10 @@ public class SparseMatrix {
         }
     }
 
-    public void addition(SparseMatrix firstMatrix, SparseMatrix secondMatrix) {}
-    public void multiplication(SparseMatrix firstMatrix, SparseMatrix secondMatrix){}
-    public void transposition(SparseMatrix matrix){}
-    public void scalarMultiplication(SparseMatrix matrix, int scalar){}
+
+
+    public void addition(SparseMatrix secondMatrix) {}
+    public void multiplication(SparseMatrix secondMatrix){}
+    public void transposition(){}
+    public void scalarMultiplication(int scalar){}
 }

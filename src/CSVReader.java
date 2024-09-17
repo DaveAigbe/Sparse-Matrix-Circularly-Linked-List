@@ -47,6 +47,7 @@ public class CSVReader {
     }
 
     private int[][] extractMatrix(String matrix) {
+            // Order these by the column, so use the 2nd index of each matrix set to order that array
             matrix = matrix.trim();
             String[] matrixStringParts = matrix.split(System.lineSeparator());
             int[][] matrixParts = new int[matrixStringParts.length][3];

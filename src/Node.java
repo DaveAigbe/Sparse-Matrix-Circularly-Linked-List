@@ -7,4 +7,8 @@ public class Node {
         this.col = col;
         this.value = value;
     }
+
+    public void printNode() {
+        System.out.print("(" + row + ", " + col + ", " + value + ")");
+    }
 }

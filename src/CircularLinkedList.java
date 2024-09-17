@@ -14,6 +14,18 @@ public class CircularLinkedList {
         tail.nextNode = head;
     }
 
+    public void printList() {
+        Node current = head;
+
+            do {
+                current.printNode();
+                System.out.print(" → ");
+                current = current.nextNode;
+            } while (current != head);
+
+            System.out.print("HEAD");
+    }
+
     public int search(int row, int col) {
         return 0;
     }
