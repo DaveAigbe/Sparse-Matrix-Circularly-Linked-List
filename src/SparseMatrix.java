@@ -126,8 +126,45 @@ public class SparseMatrix {
         addFinalRows(rowHeaders);
     }
 
+    private int dotProduct(int[] setOne, int[] setTwo) {
+        // setOne will be organized based on rows
+        // setTwo will be organized based on columns
+        int sum = 0;
+        for (int i = 0; i < setOne.length; i++) {
+            sum += setOne[i] * setTwo[i];
+        }
+       return sum;
+    }
+
     public void multiplication(SparseMatrix secondMatrix){
-        // Possibly hardest to implement? Idk I have to look up what matrix multiplication is again.
+        // 1 row will be multiplied by all columns. There needs to be a nested for loop for this.
+        // If the row is empty, no need to do multiplication on it.
+        for (int i = 0; i < rowHeaders.length; i++) {
+            if (rowHeaders[i] != null) {
+                int[] tempRow = new int[rowHeaders.length];
+                Node currentRowNode = rowHeaders[i].head;
+                do {
+                    tempRow[currentRowNode.col - 1] = currentRowNode.value;
+                    currentRowNode = currentRowNode.nextNode;
+                } while (currentRowNode != rowHeaders[i].head);
+
+
+                // Same row multiplied by all the diff columns
+                for (int j = 0; j < colHeaders.length; j++) {
+                    int[] tempCol = new int[colHeaders.length];
+                    Node currentColNode = secondMatrix.colHeaders[j].head;
+                    do {
+                        tempCol[currentColNode.row - 1] = currentColNode.value;
+                        currentColNode = currentColNode.nextNode;
+                    } while (currentColNode != secondMatrix.colHeaders[j].head);
+
+                    // Update final list
+                    int product = dotProduct(tempRow, tempCol);
+                    updateFinalRows(i + 1, j + 1, product);
+                }
+            }
+
+        }
     }
 
     public void transposition(){
