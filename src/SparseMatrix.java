@@ -131,9 +131,6 @@ public class SparseMatrix {
     }
 
     public void transposition(){
-        // Im thinking about adding a "finalMatrix" variable where I can store these after transposing. That would make
-        // it much easier to implement. I could just use the addToMatrix method after switching the row and col
-        // Also since it is only concerned with the rows for this, I wouldnt even have to consider columns in this
         for (int i = 0; i < rowHeaders.length; i++) {
             if (rowHeaders[i] != null) {
                 Node current = rowHeaders[i].head;
