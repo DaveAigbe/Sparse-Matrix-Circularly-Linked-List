@@ -1,7 +1,16 @@
+//TODO: Output finalRows to CSV
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        // Read user input
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter full file path, starting from drive: ");
+        String file = sc.nextLine();
+
         CSVReader reader = new CSVReader();
-        reader.separateLines("C:\\Users\\Dave\\Documents\\Repos\\Sparse-Matrix-LL\\src\\CS3345PA1_tests\\test2_m.csv");
+        reader.separateLines(file);
         // Create a sparse-matrix for the first matrix
         // Execute proper operations with their inputs based on the operation
         SparseMatrix matrixOne = new SparseMatrix(reader.dimension);

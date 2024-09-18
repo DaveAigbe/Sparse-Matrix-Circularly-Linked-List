@@ -19,12 +19,6 @@ public class CSVReader {
             this.lines = content.strip().split(",,");;
 
             extractValues();
-            System.out.println("Operation: " +  operation);
-            System.out.println("Dimension: " + dimension);
-            System.out.println("Matrix One: " + Arrays.deepToString(matrixOne));
-            System.out.println("Matrix Two: " + Arrays.deepToString(matrixTwo));
-            System.out.println("Scalar: " + scalar);
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
