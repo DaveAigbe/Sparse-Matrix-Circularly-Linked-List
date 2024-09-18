@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         CSVReader reader = new CSVReader();
-        reader.separateLines("C:\\Users\\Dave\\Documents\\Repos\\Sparse-Matrix-LL\\src\\CS3345PA1_tests\\test1_a.csv");
+        reader.separateLines("C:\\Users\\Dave\\Documents\\Repos\\Sparse-Matrix-LL\\src\\CS3345PA1_tests\\test2_s.csv");
         // Create a sparse-matrix for the first matrix
         // Check the operation to see if there is a second matrix (If it is a or m) and create that matrix as well
         // Execute proper operations with their inputs based on the operation
@@ -28,6 +28,7 @@ public class Main {
                 break;
             case "S":
                 matrixOne.scalarMultiplication(reader.scalar);
+                matrixOne.printFinalRows();
                 break;
             case "T":
                 matrixOne.transposition();

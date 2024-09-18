@@ -137,7 +137,16 @@ public class SparseMatrix {
     }
 
     public void scalarMultiplication(int scalar){
-        // Easiest to implement, just multiply each node in each row by the scalar value
-        // Use the for loop + do while loop combo
+        for (int i = 0; i < rowHeaders.length; i++) {
+            if (rowHeaders[i] != null) {
+                Node current = rowHeaders[i].head;
+                do {
+                    current.value *= scalar;
+                    current = current.nextNode;
+                } while(current != rowHeaders[i].head);
+            }
+        }
+
+        addFinalRows(rowHeaders);
     }
 }
