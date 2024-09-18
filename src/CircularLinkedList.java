@@ -1,5 +1,5 @@
 public class CircularLinkedList {
-    private Node head = null;
+    public Node head = null;
     private Node tail = null;
 
     public void addNode(int row, int col, int data) {
@@ -26,8 +26,28 @@ public class CircularLinkedList {
             System.out.print("HEAD");
     }
 
-    public int search(int row, int col) {
-        return 0;
+    public Integer search(int row, int col) {
+        Node current = head;
+
+        do {
+            if (current.row == row && current.col == col) {
+                return current.value;
+            }
+            current = current.nextNode;
+        } while (current != head);
+
+        return null;
+    }
+
+    public void updateNode(int row, int col, int data) {
+        Node current = head;
+
+        do {
+            if (current.row == row && current.col == col) {
+                current.value = data;
+            }
+            current = current.nextNode;
+        } while (current != head);
     }
 
 }

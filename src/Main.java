@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         CSVReader reader = new CSVReader();
-        reader.separateLines("C:\\Users\\Dave\\Documents\\Repos\\Sparse-Matrix-LL\\src\\CS3345PA1_tests\\test2_a.csv");
+        reader.separateLines("C:\\Users\\Dave\\Documents\\Repos\\Sparse-Matrix-LL\\src\\CS3345PA1_tests\\test1_a.csv");
         // Create a sparse-matrix for the first matrix
         // Check the operation to see if there is a second matrix (If it is a or m) and create that matrix as well
         // Execute proper operations with their inputs based on the operation
@@ -15,16 +15,13 @@ public class Main {
         if (reader.operation.equals("A") || reader.operation.equals("M")) {
             matrixTwo = new SparseMatrix(reader.dimension);
             matrixTwo.createMatrix(reader.matrixTwo);
-            matrixTwo.printRows();
-            matrixTwo.printCols();
         }
 
-        matrixOne.printRows();
-        matrixOne.printCols();
 
         switch (reader.operation) {
             case "A":
-                matrixOne.addition(matrixTwo);                
+                matrixOne.addition(matrixTwo);
+                matrixOne.printFinalRows();
                 break;
             case "M":
                 matrixOne.multiplication(matrixTwo);

@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class CSVReader {
     String[] lines;
@@ -56,6 +57,8 @@ public class CSVReader {
                 String[] part = matrixStringParts[i].split(",");
                 matrixParts[i] = Arrays.stream(part).mapToInt(Integer::parseInt).toArray();
             }
+
+            Arrays.sort(matrixParts, Comparator.comparingInt(a -> a[1]));
 
             return matrixParts;
     }
