@@ -1,5 +1,6 @@
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -11,6 +12,7 @@ public class CSVReader {
     int[][] matrixOne;
     int[][] matrixTwo = null;
     int scalar;
+    String fileName;
 
 
     public void separateLines(String csvFile) {
@@ -19,6 +21,7 @@ public class CSVReader {
             this.lines = content.strip().split(",,");;
 
             extractValues();
+            extractFileName(csvFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -33,6 +36,11 @@ public class CSVReader {
         } else if (operation.equals("S")) {
             scalar = Integer.parseInt(lines[2].strip());
         }
+    }
+
+    private void extractFileName(String absolutePath) {
+        Path path = Paths.get(absolutePath);
+        fileName = path.getFileName().toString().split("\\.")[0];
     }
 
     private void extractOperations() {

@@ -201,7 +201,7 @@ public class SparseMatrix {
     }
 
     public void writeToCSV(String fileName) {
-        try (FileWriter csvWriter = new FileWriter("output.csv")) {
+        try (FileWriter csvWriter = new FileWriter(fileName + "_output.csv")) {
             for (int i = 0; i < finalRowHeaders.length; i++) {
                 if (finalRowHeaders[i] != null) {
                     Node current = finalRowHeaders[i].head;

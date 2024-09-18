@@ -27,24 +27,24 @@ public class Main {
             case "A":
                 matrixOne.addition(matrixTwo);
                 matrixOne.printFinalRows();
-                matrixOne.writeToCSV("");
+                matrixOne.writeToCSV(reader.fileName);
                 break;
             case "M":
                 matrixOne.multiplication(matrixTwo);
                 matrixOne.printFinalRows();
-                matrixOne.writeToCSV("");
+                matrixOne.writeToCSV(reader.fileName);
 
                 break;
             case "S":
                 matrixOne.scalarMultiplication(reader.scalar);
                 matrixOne.printFinalRows();
-                matrixOne.writeToCSV("");
+                matrixOne.writeToCSV(reader.fileName);
 
                 break;
             case "T":
                 matrixOne.transposition();
                 matrixOne.printFinalRows();
-                matrixOne.writeToCSV("");
+                matrixOne.writeToCSV(reader.fileName);
 
                 break;
         }
