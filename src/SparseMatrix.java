@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+
 public class SparseMatrix {
     private CircularLinkedList[] rowHeaders;
     private CircularLinkedList[] colHeaders;
@@ -194,5 +198,30 @@ public class SparseMatrix {
         }
 
         addFinalRows(rowHeaders);
+    }
+
+    public void writeToCSV(String fileName) {
+        try (FileWriter csvWriter = new FileWriter("output.csv")) {
+            for (int i = 0; i < finalRowHeaders.length; i++) {
+                if (finalRowHeaders[i] != null) {
+                    Node current = finalRowHeaders[i].head;
+                    do {
+                        String[] arrayNode = new String[3];
+
+                        arrayNode[0] = String.valueOf(current.row);
+                        arrayNode[1] = String.valueOf(current.col);
+                        arrayNode[2] = String.valueOf(current.value);
+
+                        csvWriter.append(String.join(",", arrayNode));
+                        csvWriter.append("\n");
+                        current = current.nextNode;
+                    } while (current != finalRowHeaders[i].head);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
